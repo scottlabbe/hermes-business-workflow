@@ -1,54 +1,192 @@
 # Hermes Business Workflow
 
-This project contains public-safe, role-based Hermes workspaces for document-heavy business workflows.
+Public-safe Hermes workspaces for document-heavy business workflows.
 
-The demo goal is not full automation. The goal is to show how an agent can complete structured work that looks like real audit, compliance, program management, and operations support: reading inputs, following written instructions, producing reviewable artifacts, and leaving clear human review checkpoints.
+This project is a demo environment for showing that agents can do real professional work without a custom enterprise integration for every process. The pattern is intentionally lightweight: plain folders, `AGENTS.md` files, workflow instructions, templates, generated artifacts, and human review checkpoints.
 
-## What Is Here
+The goal is not full automation. The goal is faster, more structured, and more reviewable work.
+
+## Project Theme
+
+Many business workflows are difficult to automate because they involve:
+
+- PDFs, spreadsheets, emails, and shared-drive files
+- inconsistent formats
+- extraction from semi-structured documents
+- validation against rules or expectations
+- judgment-heavy review
+- evidence and documentation requirements
+- human sign-off before action
+
+This repo demonstrates a repeatable agent workflow pattern:
+
+```text
+raw files
+→ extraction
+→ normalized data
+→ validation checks
+→ exceptions, findings, or follow-up questions
+→ draft report, workbook, or workpaper
+→ run_summary.md with human review needed
+```
+
+## Repository Structure
 
 ```text
 hermes-business-workflow/
-  AGENTS.md
   README.md
+  AGENTS.md
+  .gitignore
   docs/
+    data_sources.md
   shared/
+    templates/
+      run_summary.md
   audit/
     AGENTS.md
+    README.md
     data-reliability/
     variance_explainer/
   program_management/
     AGENTS.md
+    README.md
     cost-reports/
 ```
 
-## Workspaces
+## Current Workspaces
 
-`audit/data-reliability/` profiles CSV datasets against a requested list of key fields. It writes generated code and structured outputs so the analysis can be inspected.
+### Audit
 
-`audit/variance_explainer/` turns prior-year and current-year trial balance files into a variance review workbook with formulas, rankings, analysis notes, and suggested follow-up questions.
+`audit/` contains audit-style review workflows.
 
-`program_management/` is reserved for program management, monitoring, reporting, and operations workflows. The current cost-report sample data should be treated as demo input until that workflow is fully documented.
+Implemented or scaffolded workflows:
 
-## Public-Safe Boundary
+- `audit/data-reliability/`: profile CSV datasets against requested key fields, write generated code, structured artifacts, and a reliability report.
+- `audit/variance_explainer/`: compare prior-year and current-year trial balances and produce a variance review workbook.
 
-Do not add secrets, credentials, private client data, confidential employer data, private emails, or production databases.
+Planned audit workflow extensions:
 
-Inputs should be synthetic, public, or otherwise appropriate to redistribute. When public data is used, document the source and any redistribution assumptions in `docs/data_sources.md` or in the relevant workspace README.
+- sampling support after data reliability profiling
+- reconciliation review
+- evidence extraction from PDFs and spreadsheets
+- finding development from exceptions
+- audit workpaper support
 
-## Expected Run Pattern
+### Program Management
 
-For a meaningful workflow run, Hermes should:
+`program_management/` contains program management, monitoring, reporting, and operations workflows.
 
-1. Read the root `AGENTS.md`.
-2. Select the active workspace under `audit/` or `program_management/`.
-3. Read the workspace `AGENTS.md` and any referenced skill or schema files.
-4. Write generated artifacts under the active workspace's `runs/` folder.
-5. Include a `run_summary.md` that states inputs used, outputs created, checks performed, limitations, and human review needed.
+Current scaffold:
 
-## Human Review
+- `program_management/cost-reports/`: demo salary-report inputs for a future cost report desk review workflow.
 
-Outputs are review aids, not final audit, compliance, legal, financial, or management conclusions. A human should review assumptions, inputs, generated code, calculations, and any judgmental language before using an output.
+Planned program management workflows:
 
-## What Is Intentionally Not Included
+- cost report desk review
+- contract obligation tracking
+- grant reporting review
+- weekly status briefing
+- meeting-to-action tracking
+- operational reporting
 
-This repo does not include private client materials, production databases, credentials, unattended production automation, or claims that an agent can replace professional review.
+## Workflow Portfolio
+
+The strongest demos should be end-to-end workflows, not isolated prompts.
+
+### Cost Report Desk Review
+
+Planned flow:
+
+1. Extract data from entity or district workbooks.
+2. Normalize salaries, benefits, funding splits, and totals.
+3. Validate math, missing fields, unusual percentages, duplicate employees, and inconsistent periods.
+4. Identify exceptions and follow-up questions.
+5. Produce an exception log, review memo, source trace, and `run_summary.md`.
+
+### Data Reliability Plus Sampling
+
+Planned flow:
+
+1. Profile a dataset and requested key fields.
+2. Validate completeness, duplicates, blanks, parse failures, and unusual values.
+3. Generate a sampling plan using a documented method.
+4. Select sample items.
+5. Create a testing worksheet and sample rationale.
+6. Produce human review notes and `run_summary.md`.
+
+### Trial Balance Variance Review
+
+Current flow:
+
+1. Load prior-year and current-year trial balances.
+2. Normalize chart of account fields and balances.
+3. Aggregate duplicate account keys.
+4. Calculate dollar and percent variance.
+5. Rank accounts by variance.
+6. Generate follow-up questions.
+7. Produce a workbook and `run_summary.md`.
+
+### Contract Obligation Tracker
+
+Planned flow:
+
+1. Extract obligations from contract files.
+2. Identify deliverables, due dates, reporting requirements, payment terms, and renewal dates.
+3. Build an obligation register.
+4. Flag missing owners, expired dates, upcoming deadlines, and ambiguous clauses.
+5. Produce a management summary and source citation log.
+
+### Finding Development
+
+Planned flow:
+
+1. Start from exceptions or test results.
+2. Group related issues.
+3. Map each issue to condition, criteria, cause, effect, and recommendation.
+4. Draft finding language.
+5. Generate evidence checklists and management questions.
+
+Findings are draft support only. They are not final audit conclusions.
+
+## Operating Model
+
+Durable project files live in Git.
+
+Generated workflow outputs should live under each workflow's `runs/` folder and include `run_summary.md`.
+
+Disposable analysis workpapers should live under each workflow's `workpapers/` folder when that folder exists.
+
+Reviewed sample outputs can be copied into an `examples/` folder later, after public-safety review.
+
+```text
+Instructions, templates, schemas, and docs = durable
+Runs, scratch files, and temporary workpapers = disposable
+Reviewed sample outputs = examples
+```
+
+## Using With Hermes
+
+Run Hermes from the project root or from the specific workflow folder.
+
+Project root:
+
+```bash
+cd ~/hermes/projects/hermes-business-workflow
+hermes chat
+```
+
+Data reliability workflow:
+
+```bash
+cd ~/hermes/projects/hermes-business-workflow/audit/data-reliability
+hermes chat
+```
+
+Trial balance variance workflow:
+
+```bash
+cd ~/hermes/projects/hermes-business-workflow/audit/variance_explainer
+hermes chat
+```
+
+Hermes should read the root `AGENTS.md`, then the relevant workspace `AGENTS.md`, then any workflow-specific schemas, templates, or skill files.
