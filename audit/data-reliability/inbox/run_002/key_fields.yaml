@@ -1,0 +1,11 @@
+dataset_file: tour_data.csv
+key_fields:
+ - Rank
+ - Peak
+ - All Time Peak
+ - Adjusted gross (in 2022 dollars)
+ - Artist
+ - Tour title
+ - Year(s)
+ - Shows
+ - Average gross

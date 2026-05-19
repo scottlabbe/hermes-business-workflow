@@ -1,0 +1,13 @@
+dataset_file: combined_cost_reports.csv
+key_fields:
+ - district_name
+ - year_end
+ - employee_name
+ - salary
+ - healthcare
+ - retirement
+ - federal_pct
+ - state_pct
+ - source_file
+ - healthcare_percent
+ - retirement_percent

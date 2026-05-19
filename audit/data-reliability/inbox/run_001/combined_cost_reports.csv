@@ -1,0 +1,25 @@
+﻿district_name,year_end,employee_name,salary,healthcare,retirement,federal_pct,state_pct,source_file,healthcare_percent,retirement_percent
+Baton Rouge,12/31/23,Keith,22500,1800,855,1,0,Salary_Report_BatonRouge.xlsx,0.08,0.04
+Baton Rouge,12/31/23,Paul,31500,2250,1350,0.75,0.25,Salary_Report_BatonRouge.xlsx,0.07,0.04
+Baton Rouge,12/31/23,Taylor,45000,3150,180,0.65,0.45,Salary_Report_BatonRouge.xlsx,0.07,0
+Baton Rouge,12/31/01,Kiley,18000,1350,270,0.2,0.8,Salary_Report_BatonRouge.xlsx,0.08,0.02
+Lafayette,12/31/23,Sean,21600,1728,820,0.15,0.85,Salary_Report_Lafayette.xlsx,0.08,0.04
+Lafayette,12/31/23,Dustin,30240,2160,,0.4,0.6,Salary_Report_Lafayette.xlsx,0.07,0
+Lafayette,12/31/23,Adam,43200,3024,172,0.25,0.75,Salary_Report_Lafayette.xlsx,0.07,0
+Lafayette,12/31/23,Sam,17280,1296,259,0.95,0.05,Salary_Report_Lafayette.xlsx,0.08,0.01
+Monroe,12/31/23,Albert,99000,3100,1500,0.99,0.01,Salary_Report_Monroe.xlsx,0.03,0.02
+Monroe,12/31/23,Chase,Smith,3500,2000,0.35,0.65,Salary_Report_Monroe.xlsx,#VALUE!,#VALUE!
+Monroe,12/31/23,Ashley,30000,2500,500,0.25,0.75,Salary_Report_Monroe.xlsx,0.08,0.02
+Monroe,12/31/23,Elizabeth,34000,2000,700,0.8,0.2,Salary_Report_Monroe.xlsx,0.06,0.02
+New Orleans,12/31/23,John,25000,2000,950,0.95,0.05,Salary_Report_NewOrleans.xlsx,0.08,0.04
+New Orleans,12/31/23,Mark,35000,2500,1500,0.85,0.15,Salary_Report_NewOrleans.xlsx,0.07,0.04
+New Orleans,12/31/23,Lucy,50000,3500,200,0.7,0.3,Salary_Report_NewOrleans.xlsx,0.07,0
+New Orleans,12/31/23,Megan,20000,1500,300,0.5,0.5,Salary_Report_NewOrleans.xlsx,0.08,0.02
+Northeast Louisiana,12/31/23,Ray,25920,2073,984,0,1,Salary_Report_Northeast.xlsx,0.08,0.04
+Northeast Louisiana,12/31/23,Ryan,36288,2592,1555,0.45,0.55,Salary_Report_Northeast.xlsx,0.07,0.04
+Northeast Louisiana,12/31/23,Katie,51840,3628,206,0.15,0.85,Salary_Report_Northeast.xlsx,0.07,0
+Northeast Louisiana,12/31/23,Heather,20736,1555,-310,0.25,0.75,Salary_Report_Northeast.xlsx,0.07,-0.01
+Plaquemines,12/31/23,Mike,38880,3109,1476,0.3,0.7,Salary_Report_Plaquemines.xlsx,0.08,0.04
+Plaquemines,Parish,Adam,54432,3888,2332,0.45,0.55,Salary_Report_Plaquemines.xlsx,0.07,0.04
+Plaquemines,12/31/23,Kate,77760,5442,309,0.2,0.8,Salary_Report_Plaquemines.xlsx,0.07,0
+Plaquemines,12/31/23,Heather,31104,2332,465,0.35,0.65,Salary_Report_Plaquemines.xlsx,0.07,0.01

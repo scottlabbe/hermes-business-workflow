@@ -1,0 +1,9 @@
+dataset_file: Worker_Adjustment_and_Retraining_Notification__WARN__Notices_20250602.csv
+key_fields:
+ - NOTICE_DATE
+ - JOB_SITE_NAME
+ - COUNTY_NAME
+ - WDA_NAME
+ - TOTAL_LAYOFF_NUMBER
+ - WFDD_RECEIVED_DATE
+ - CITY_NAME

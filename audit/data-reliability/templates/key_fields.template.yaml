@@ -1,0 +1,6 @@
+dataset_file: example.csv
+key_fields:
+  - customer_id
+  - signup_date
+  - state
+  - account_balance
