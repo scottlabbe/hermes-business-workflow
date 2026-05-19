@@ -126,28 +126,6 @@ Current flow:
 6. Generate follow-up questions.
 7. Produce a workbook and `run_summary.md`.
 
-### Contract Obligation Tracker
-
-Planned flow:
-
-1. Extract obligations from contract files.
-2. Identify deliverables, due dates, reporting requirements, payment terms, and renewal dates.
-3. Build an obligation register.
-4. Flag missing owners, expired dates, upcoming deadlines, and ambiguous clauses.
-5. Produce a management summary and source citation log.
-
-### Finding Development
-
-Planned flow:
-
-1. Start from exceptions or test results.
-2. Group related issues.
-3. Map each issue to condition, criteria, cause, effect, and recommendation.
-4. Draft finding language.
-5. Generate evidence checklists and management questions.
-
-Findings are draft support only. They are not final audit conclusions.
-
 ## Operating Model
 
 Durable project files live in Git.
