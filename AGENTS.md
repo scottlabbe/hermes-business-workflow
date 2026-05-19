@@ -69,6 +69,35 @@ If a task is program management, monitoring, reporting, or operations-related, u
 
 If the task is repo maintenance, operate from the project root.
 
+## Python Execution Rule
+
+For workflow runs in this project, use the terminal tool from the project root.
+
+Do not use `execute_code` for workflow execution.
+
+Reason: `execute_code` runs in a separate sandbox Python environment and does not use this project’s `.venv`, so project dependencies such as `pandas` and `openpyxl` may not be available.
+
+Before running any workflow, run:
+
+```bash
+cd /home/hermes/projects/hermes-business-workflow
+./scripts/preflight.sh
+```
+
+If preflight fails, stop immediately and report:
+- the command that failed
+- the error message
+- the proposed fix
+
+For Python execution, use the project virtual environment explicitly:
+
+```bash
+cd /home/hermes/projects/hermes-business-workflow
+.venv/bin/python path/to/script.py
+```
+
+Do not use bare `python`, bare `python3`, or `execute_code` for workflow runs unless Scott explicitly approves.
+
 ## Demo Readiness
 
 This project is intended to demonstrate real business workflows with public-safe inputs, visible instructions, reproducible artifacts, and human review checkpoints.
