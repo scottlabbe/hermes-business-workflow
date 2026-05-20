@@ -98,6 +98,8 @@ cd /home/hermes/projects/hermes-business-workflow
 
 Do not use bare `python`, bare `python3`, or `execute_code` for workflow runs unless Scott explicitly approves.
 
+Do not search .venv, site-packages, caches
+
 ## Demo Readiness
 
 This project is intended to demonstrate real business workflows with public-safe inputs, visible instructions, reproducible artifacts, and human review checkpoints.

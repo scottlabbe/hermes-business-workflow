@@ -10,9 +10,20 @@ Take two trial balance files — one prior-year, one current-year — and produc
 
 The goal is an auditor- or controller-ready variance review workbook, not a raw spreadsheet comparison.
 
-Computational rules (schema, matching, math, ranking, question templates, formatting) live in SKILL.md. This file covers what to ask the user and what to deliver.
+Computational rules (schema, matching, math, ranking, question templates, formatting) live in SKILL.md. This file covers what to ask the user and what to deliver. This is a project-local skill. Read it by path.
 
 Outputs are review aids, not final audit, compliance, legal, financial, or management conclusions.
+
+---
+
+## Mandatory Read Order
+
+Before running analysis, read instructions in this order:
+
+1. `AGENTS.md`
+2. `variance_explainer/skills/tb-variance-analysis/SKILL.md`
+
+Do not create the workbook until the threshold intake rules below are satisfied.
 
 ---
 
@@ -30,19 +41,36 @@ If the filenames clearly indicate year/status (e.g., `prior_year_tb.xlsx`, `2024
 
 ---
 
-## Required User Questions Before Analysis
+## Threshold Intake Before Analysis
 
-Ask the user for optional thresholds:
+Before analysis, determine the threshold configuration from the user's request.
+
+If the user's request does not include thresholds and does not explicitly say to use defaults, stop and ask:
 
 1. Dollar threshold for generating client questions.
 2. Percent-change threshold for generating client questions.
 3. If both are provided, whether questions trigger when either threshold is met (`OR`) or only when both are met (`AND`).
 
-The user may provide both, only dollar, only percent, or neither. If neither, use defaults: absolute dollar change ≥ $10,000 `OR` absolute percent change ≥ 20% (with the trivial-balance guardrail in SKILL.md).
+Do not treat omission as permission to use defaults.
+
+The user may provide:
+
+- both a dollar threshold and a percent-change threshold
+- only a dollar threshold
+- only a percent-change threshold
+- an explicit instruction to use defaults
+
+Use defaults only when the user explicitly says to use defaults, says they have no threshold preference, or says to proceed with the default thresholds. Defaults are: absolute dollar change ≥ $10,000 `OR` absolute percent change ≥ 20% (with the trivial-balance guardrail in SKILL.md).
+
+If the prompt includes a complete threshold configuration, parse it and continue. Do not ask again.
 
 ### Trigger logic precedence
 
 If the user provides `AND` or `OR` anywhere in the threshold response, treat that as the selected trigger logic. This explicit user instruction overrides the default `OR` behavior, even when thresholds and trigger logic appear across separate sentences or lines.
+
+If the user provides both a dollar threshold and a percent-change threshold but does not provide `AND` or `OR`, stop and ask them to choose `AND` or `OR` before running.
+
+If the user provides only one threshold, trigger logic is not applicable and no `AND`/`OR` question is required.
 
 ### Malformed thresholds
 
@@ -63,7 +91,20 @@ Before running analysis, restate the parsed threshold configuration in this exac
 - Trigger logic: `AND`, `OR`, or `Not applicable`
 - Interpretation: Plain-English explanation of which accounts will receive questions
 
-If both thresholds are provided and the trigger logic is unclear, ask the user to choose `AND` or `OR` before running.
+If threshold information is incomplete or ambiguous, stop after asking the needed clarification and do not create the workbook.
+
+### Examples
+
+- User says: `Run the variance analysis.`
+  - Action: ask for threshold preferences before analysis.
+- User says: `Run with defaults.`
+  - Action: use `$10,000 OR 20%`, restate the configuration, then run.
+- User says: `Use a $25,000 threshold.`
+  - Action: use dollar-only threshold, trigger logic `Not applicable`, restate the configuration, then run.
+- User says: `Use $25,000 and 15%.`
+  - Action: ask whether to use `AND` or `OR` before analysis.
+- User says: `Use $25,000 or 15%.`
+  - Action: use both thresholds with `OR`, restate the configuration, then run.
 
 ---
 
@@ -97,4 +138,4 @@ The task is complete when:
 5. Questions are populated only for accounts exceeding the chosen threshold logic.
 6. The workbook is formatted for review per SKILL.md.
 7. README documents thresholds, column mappings, aggregation, balance convention, and any exceptions.
-8. `runs/<run_id>/run_summary.md` documents the task, inputs, outputs, checks, limitations, human review needed, and suggested improvements.
+8. `runs/<run_id>/run_summary.md` documents the task, inputs, threshold configuration used, outputs, checks, limitations, human review needed, and suggested improvements.
