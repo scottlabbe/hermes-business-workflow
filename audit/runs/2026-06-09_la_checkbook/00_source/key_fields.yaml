@@ -1,0 +1,11 @@
+dataset_file: LACheckbookData-3.xlsx
+key_fields:
+ - Department
+ - Agency
+ - Category
+ - Type
+ - Vendor
+ - Funding Type
+ - Invoice
+ - Posting Date/FiscalYear
+ - Amount

@@ -1,0 +1,96 @@
+{
+  "skill": "variance-explainer",
+  "status": "completed_with_limitations",
+  "source_inputs": {
+    "prior_year_file": "00_source/FY25 TB.csv",
+    "current_year_file": "00_source/FY26 TB.csv"
+  },
+  "artifacts_written": [
+    "01_variance_analysis/variance_analysis.xlsx",
+    "01_variance_analysis/variance_analysis_metadata.json"
+  ],
+  "parameters": {
+    "dollar_threshold": 200000.0,
+    "percent_threshold": 0.2,
+    "threshold_logic": "AND",
+    "zero_balance_percent_change": "blank when prior-year balance is zero"
+  },
+  "counts": {
+    "prior_year_rows": 247,
+    "current_year_rows": 247,
+    "comparison_rows": 246,
+    "questions_generated": 8,
+    "prior_year_duplicate_match_keys_aggregated": 1,
+    "current_year_duplicate_match_keys_aggregated": 1
+  },
+  "column_mappings": {
+    "prior_year": {
+      "account_number": "Account Number",
+      "account_name": "Account Name",
+      "account_category": "Category",
+      "balance": "Balance",
+      "department": "Department"
+    },
+    "current_year": {
+      "account_number": "Account Number",
+      "account_name": "Account Name",
+      "account_category": "Category",
+      "balance": "Balance",
+      "department": "Department"
+    }
+  },
+  "validation_checks": [
+    {
+      "check": "Both input files loaded successfully",
+      "status": "passed"
+    },
+    {
+      "check": "Account name and balance columns identified per file",
+      "status": "passed"
+    },
+    {
+      "check": "All balances are numeric",
+      "status": "passed"
+    },
+    {
+      "check": "Comparison row count equals unique match keys across both years",
+      "status": "passed"
+    },
+    {
+      "check": "Dollar change equals current year balance less prior year balance",
+      "status": "passed"
+    },
+    {
+      "check": "Suggested questions populated only for triggered rows",
+      "status": "passed"
+    },
+    {
+      "check": "AND threshold logic applied consistently",
+      "status": "passed"
+    },
+    {
+      "check": "No Materiality Score column generated",
+      "status": "passed"
+    },
+    {
+      "check": "Summary documents thresholds, mappings, aggregation counts, and balance convention",
+      "status": "passed"
+    }
+  ],
+  "limitations": [
+    "Outputs are draft workpapers and review aids only.",
+    "Source account categories and signed-balance conventions were not independently validated.",
+    "Percent change is blank when prior-year balance is zero; new accounts may need separate review."
+  ],
+  "human_review_needed": [
+    "Review generated questions before sending to a client or process owner.",
+    "Review large non-triggered changes, new accounts, closed accounts, and sign flips for possible follow-up.",
+    "Confirm whether account-number matching is appropriate for the trial balance population."
+  ],
+  "next_stage_input": {
+    "file": "01_variance_analysis/variance_analysis.xlsx",
+    "sheet": "Comparison",
+    "table": "Comparison!A1:O247",
+    "record_count": 246
+  }
+}

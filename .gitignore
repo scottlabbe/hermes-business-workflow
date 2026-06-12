@@ -38,11 +38,11 @@ tmp/
 cache/
 
 # Workflow outputs are generated artifacts unless intentionally copied to examples/.
-audit/*/runs/*
-!audit/*/runs/.gitkeep
-audit/*/workpapers/*
-!audit/*/workpapers/.gitkeep
-program_management/*/runs/*
-!program_management/*/runs/.gitkeep
-program_management/*/workpapers/*
-!program_management/*/workpapers/.gitkeep
+# audit/*/runs/*
+# !audit/*/runs/.gitkeep
+# audit/*/workpapers/*
+# !audit/*/workpapers/.gitkeep
+# program_management/*/runs/*
+# !program_management/*/runs/.gitkeep
+# program_management/*/workpapers/*
+#   !program_management/*/workpapers/.gitkeep

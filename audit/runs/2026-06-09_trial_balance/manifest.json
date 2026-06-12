@@ -1,0 +1,35 @@
+{
+  "manifest_version": "1.0",
+  "run_id": "2026-06-09_trial_balance",
+  "job_id": "trial_balance",
+  "created_at": "2026-06-09T00:00:00",
+  "status": "completed_with_limitations",
+  "source_files": [
+    "00_source/FY25 TB.csv",
+    "00_source/FY26 TB.csv"
+  ],
+  "stages": {
+    "01_variance_analysis": {
+      "skill": "variance-explainer",
+      "status": "completed_with_limitations",
+      "output": "01_variance_analysis/variance_analysis.xlsx",
+      "metadata": "01_variance_analysis/variance_analysis_metadata.json",
+      "next_stage_input": {
+        "file": "01_variance_analysis/variance_analysis.xlsx",
+        "sheet": "Comparison",
+        "table": "Comparison!A1:O247",
+        "record_count": 246
+      }
+    }
+  },
+  "current_sampling_input": {
+    "ready_for_sampling": false,
+    "file": null,
+    "sheet": null,
+    "record_count": null,
+    "key_fields": [],
+    "limitations": [
+      "This run is a variance-analysis workflow and does not produce a sampling input by default."
+    ]
+  }
+}

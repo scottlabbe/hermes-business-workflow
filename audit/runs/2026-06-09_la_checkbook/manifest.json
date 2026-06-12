@@ -1,0 +1,48 @@
+{
+  "manifest_version": "1.0",
+  "run_id": "2026-06-09_la_checkbook",
+  "job_id": "la_checkbook",
+  "created_at": "2026-06-08T21:05:41",
+  "status": "completed_with_limitations",
+  "source_files": [
+    "00_source/LACheckbookData-3.xlsx",
+    "00_source/key_fields.yaml"
+  ],
+  "stages": {
+    "01_data_reliability": {
+      "skill": "data-reliability",
+      "status": "completed_with_limitations",
+      "output": "01_data_reliability/data_reliability.xlsx",
+      "metadata": "01_data_reliability/data_reliability_metadata.json"
+    },
+    "02_expense-sample": {
+      "skill": "expense-sample",
+      "status": "completed_with_limitations",
+      "output": "02_expense-sample/sample_selection.xlsx",
+      "metadata": "02_expense-sample/sample_metadata.json"
+    }
+  },
+  "current_sampling_input": {
+    "ready_for_sampling": true,
+    "file": "01_data_reliability/data_reliability.xlsx",
+    "sheet": "Source File",
+    "record_count": 38951,
+    "key_fields": [
+      "Department",
+      "Agency",
+      "Category",
+      "Type",
+      "Vendor",
+      "Funding Type",
+      "Invoice",
+      "Posting Date/FiscalYear",
+      "Amount"
+    ],
+    "limitations": [
+      "Outputs are review aids and data reliability observations, not final audit, compliance, legal, financial, or management conclusions.",
+      "Review is limited to requested key-field profiling, duplicate whole-row checks, unnamed header checks, and basic parsing observations.",
+      "Excel workbook parsing used the first and only source sheet because key_fields.yaml did not specify a sheet name.",
+      "Posting Date/FiscalYear was parsed as numeric serial/code values; human review should confirm the intended date or fiscal-year interpretation."
+    ]
+  }
+}
